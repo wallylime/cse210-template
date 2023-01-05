@@ -6,36 +6,37 @@ class Program
     {
         Console.Write("What is your grade percentage? ");
         int grade = int.Parse(Console.ReadLine());
-        
+
+        string letter;
         if (grade >= 90)
         {
-            Console.WriteLine("You have an A. Good job!");
+            letter = "A";
         }
         else if (grade >= 80)
         {
-            Console.WriteLine("You have a B. Pretty good job!");
+            letter = "B";
         }
         else if (grade >= 70)
         {
-            Console.WriteLine("You have a C. You're a very average student.");
+            letter = "C";
         }
         else if (grade >= 60)
         {
-            Console.WriteLine("You have a D. You need to work harder.");
+            letter = "D";
         }
         else
         {
-            Console.WriteLine("You have an F. Yikes!");
+            letter = "F";
         }
 
         if (grade >= 70)
         {
-            Console.WriteLine("Good job passing the class!");
+            Console.WriteLine($"You have a/an {letter}. You are currently passing the class!");
         }
 
         else 
         {
-            Console.WriteLine("Do you really want to fail this class? Work harder!");
+            Console.WriteLine($"You have a/an {letter}. You are currently failing this class, but there's still time. Work harder!");
         }
     }
 }
