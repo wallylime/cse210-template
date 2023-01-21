@@ -1,4 +1,4 @@
-using System;
+using System.IO;
 public class Menu
 {
   public string _fileName = "";
@@ -41,7 +41,7 @@ public class Menu
     string prompt = newEntry.GetPrompt();
     Console.WriteLine(prompt);
     string userEntry = Console.ReadLine();
-    string completeEntry = $"\n Date: {date} - Prompt: {prompt} \n {userEntry} \n";
+    string completeEntry = $"Date: {date} - Prompt: {prompt} \n {userEntry} \n";
     _entries.Add(completeEntry);
     ShowOptions();
     ProcessUserInput();
@@ -50,16 +50,33 @@ public class Menu
     foreach (string entry in _entries) {
       Console.Write(entry);
     }
+    ShowOptions();
+    ProcessUserInput();
   }
 
   public void LoadFile() {
-    Console.Write("This will eventually load the file.");
+    Console.WriteLine("What file would you like to load: ");
+    string fileName = Console.ReadLine();
+    string[] lines = System.IO.File.ReadAllLines(fileName);
+    foreach (string line in lines)
+    {
+    Console.WriteLine(line);
+    }
+    ShowOptions();
+    ProcessUserInput();
   }
-
   public void SaveFile() {
-    Console.Write("This will eventually save the file.");
+    Console.WriteLine("What would you like to call this file? (It must be a .txt file.) ");
+    string fileName = Console.ReadLine();
+    using (StreamWriter journalFile = new StreamWriter(fileName))
+    {
+      foreach (string entry in _entries) {
+        journalFile.WriteLine(entry);
+      }
+    }
+    ShowOptions();
+    ProcessUserInput();
   }
-
   public void QuitProgram() {
     Console.Write("Thanks for using this journal program.");
   }
