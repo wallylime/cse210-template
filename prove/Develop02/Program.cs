@@ -6,7 +6,11 @@ class Program
     {
         Console.WriteLine("Welcome to the Journal Program!");
         Menu menu = new Menu();
-        menu.ShowOptions();//Lets the user know what they can do in the program
-        menu.ProcessUserInput();//Gets the user's input and does the requested action
+        bool isDone = false;
+        while (!menu.isDone)
+        {
+            menu.ShowOptions();//Lets the user know what they can do in the program
+            menu.ProcessUserInput();//Gets the user's input and does the requested action
+        }
     }
 }
