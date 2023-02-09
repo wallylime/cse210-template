@@ -17,21 +17,25 @@ public class Word {
   public string GetWord() {
     return _word;
   }
-  public void SetHidden(bool hidden) {
-    _isHidden = hidden;
-  }
+  // public void SetHidden(bool hidden) {
+  //   _isHidden = hidden;
+  // }
 public bool GetHidden() {
   return _isHidden;
 }
-  public int HideWord() {
-    int counter = 0;
+  public string HideWord() {
+    string hiddenWord = "";
     for (int i=0; i < _word.Length; i++) {
       char character = _word[i];
       bool letter = Char.IsLetter(character);
       if (letter) {
-        counter++;
+        hiddenWord += "_";
+      }
+      else {
+        hiddenWord += character;
       }
     }
-    return counter;
+    _isHidden = true;
+    return hiddenWord;
   }
 }

@@ -20,7 +20,9 @@ public Scripture(string book, string chapter, string verses, string verseText) {
     _verseText.Add(word);
   }
 }
-public int GetLetterCount() {
-  return _verseText[16].HideWord();
+
+public void TestHiddenWord() {
+  Word word = _verseText[8];
+  Console.WriteLine(word.HideWord());
 }
 }

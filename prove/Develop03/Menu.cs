@@ -19,8 +19,7 @@ public class Menu
   {
     if (userInput == "")
     {
-      int letterCount = scripture.GetLetterCount();
-      Console.WriteLine(letterCount);
+      scripture.TestHiddenWord();
     }
     else if (userInput == "quit")
     {
