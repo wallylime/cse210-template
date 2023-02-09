@@ -18,7 +18,7 @@ public class Menu
   {
     if (userInput == "")
     {
-      Console.WriteLine("User has pressed enter. This will eventually do something.")
+      Console.WriteLine("User has pressed enter. This will eventually do something.");
     }
     else if (userInput == "quit")
     {
