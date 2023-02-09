@@ -19,8 +19,8 @@ public class Menu
   {
     if (userInput == "")
     {
-      Console.WriteLine("Test reference:");
-      scripture.TestReference();
+      int letterCount = scripture.GetLetterCount();
+      Console.WriteLine(letterCount);
     }
     else if (userInput == "quit")
     {
