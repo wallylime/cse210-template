@@ -1,6 +1,7 @@
 /*
-This program is for memorizing scriptures by taking out a few
-words at a time until all of the words are hidden.
+This program is for memorizing scriptures by taking
+out a few words at a time until all of the words
+are hidden.
 */
 
 using System;
