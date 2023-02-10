@@ -19,7 +19,7 @@ public class Menu
   {
     if (userInput == "")
     {
-      scripture.HideWords();
+      scripture.DisplayScripture();
     }
     else if (userInput == "quit")
     {
@@ -30,6 +30,4 @@ public class Menu
       Console.WriteLine("Sorry, that's not a valid response.");
     }
   }
-
-
 }
