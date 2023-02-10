@@ -8,9 +8,9 @@ public class Menu
   private Scripture scripture = new Scripture("1 Peter", "5", "6-7", "Humble yourselves therefore under the mighty hand of God, that he may exalt you in due time: Casting all your care upon him; for he careth for you.");
   public void RunMenu()
   {
-    while (_quit == false)
+    while ((_quit == false) && (scripture.GetHiddenStatus() == false))
     {
-      Console.WriteLine("Press the Enter key to continue. Type \"quit\" to finish.");
+      Console.WriteLine("\nPress the Enter key to continue. Type \"quit\" to finish.");
       string userInput = Console.ReadLine();
       ProcessInput(userInput);
     }
@@ -19,7 +19,7 @@ public class Menu
   {
     if (userInput == "")
     {
-      scripture.TestHiddenWord();
+      scripture.HideWords();
     }
     else if (userInput == "quit")
     {
@@ -31,12 +31,5 @@ public class Menu
     }
   }
 
-/*  
-    using this setter for quit because I also want to set it to true once all
-    of the scripture words are hidden which is handled in the scripture class
-*/
-  public void SetQuit(bool quit)
-  {
-    _quit = quit;
-  }
+
 }

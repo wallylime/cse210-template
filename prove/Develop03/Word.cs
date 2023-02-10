@@ -17,7 +17,8 @@ public class Word
   {
     _word = word;
   }
-  public void SetIsHidden(bool isHidden) {
+  public void SetIsHidden(bool isHidden)
+  {
     _isHidden = isHidden;
   }
   public bool GetIsHidden()
