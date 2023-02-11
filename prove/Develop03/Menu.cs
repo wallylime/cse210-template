@@ -1,6 +1,8 @@
 /*
 This will run the main menu for the scripture memorizer.
+It will show the user options and process the user's response.
 */
+
 using System;
 public class Menu
 {

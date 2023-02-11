@@ -21,10 +21,16 @@ public class Word
   {
     _isHidden = isHidden;
   }
-  public bool GetIsHidden()
-  {
-    return _isHidden;
-  }
+  /*
+  Was originally going to use the commented out method
+  below to decide if a word was already hidden, but then I 
+  ended up keeping track using a list of the random numbers
+  from the generator.
+  */
+  // public bool GetIsHidden()
+  // {
+  //   return _isHidden;
+  // }
   public string GetWord()
   {
     return _word;
