@@ -28,12 +28,13 @@ class Program
       switch (userChoice)
       {
         case "1":
-          BreathingActivity breathingActivity = new BreathingActivity("breathing activity", "\nThis activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.\n");
+          BreathingActivity breathingActivity = new BreathingActivity("breathing activity", "\nThis activity will help you relax by walking you through breathing in and out slowly.\nClear your mind and focus on your breathing.\n");
           breathingActivity.RunBreathingActivity();
           break;
 
         case "2":
-          Console.WriteLine("This will eventually run the reflecting activity.");
+          ReflectingActivity reflectingActivity = new ReflectingActivity("reflecting activity", "\nThis activity will help you reflect on times in your life when you have shown strength and resilience.\nThis will help you recognize the power you have and how you can use it in other aspects of your life.\n");
+          reflectingActivity.RunReflectingActivity();
           break;
 
         case "3":
