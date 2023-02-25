@@ -28,7 +28,9 @@ class Program
       switch (userChoice)
       {
         case "1":
-          Console.WriteLine("This will eventually run the breathing activity.");
+          Console.WriteLine("Testing my pause animation:");
+          Activity animation = new Activity();
+          animation.PauseAnimation();
           break;
 
         case "2":
