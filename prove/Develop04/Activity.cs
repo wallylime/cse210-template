@@ -49,12 +49,12 @@ public class Activity
       for (int j = 0; j < 3; j++)
       {
         Console.Write("<");
-        Thread.Sleep(400);
+        Thread.Sleep(300);
       }
       for (int k = 0; k < 3; k++)
       {
         Console.Write(">");
-        Thread.Sleep(400);
+        Thread.Sleep(300);
       }
       Thread.Sleep(500);
       Console.Write("\b\b\b\b\b\b      \b\b\b\b\b\b");
