@@ -42,19 +42,20 @@ public class Activity
     string durationResponse = Console.ReadLine();
     _durationInSeconds = int.Parse(durationResponse);
   }
-  private void PauseAnimation(int iterations)
+  //One iteration of PauseAnimation takes 1.5 seconds
+  protected void PauseAnimation(int iterations)
   {
     for (int i = 0; i < iterations; i++)
     {
       for (int j = 0; j < 3; j++)
       {
         Console.Write("<");
-        Thread.Sleep(300);
+        Thread.Sleep(250);
       }
       for (int k = 0; k < 3; k++)
       {
         Console.Write(">");
-        Thread.Sleep(300);
+        Thread.Sleep(250);
       }
       Thread.Sleep(500);
       Console.Write("\b\b\b\b\b\b      \b\b\b\b\b\b");
