@@ -1,43 +1,57 @@
 using System;
 
 //Base class for the other activities
-public class Activity {
+public class Activity
+{
   private string _activityName;
   private string _activityDescription;
   private int _durationInSeconds;
 
-  private DateTime startTime;
-  private DateTime futureTime;
-
-  private DateTime currentTime;
+  private DateTime _startTime;
+  private DateTime _endTime;
 
   //Here's the constructor
-  public Activity(string activityName, string activityDescription) {
+  public Activity(string activityName, string activityDescription)
+  {
     _activityName = activityName;
     _activityDescription = activityDescription;
   }
 
-  public void BeginActivity() {
+  protected void BeginActivity()
+  {
     Console.WriteLine($"Welcome to the {_activityName}.");
     Console.WriteLine(_activityDescription);
     GetDuration();
-    //This next line is for testing:
-    Console.WriteLine(_durationInSeconds);
-    Console.WriteLine("Get ready!");
-    PauseAnimation();
+    Console.WriteLine("Get ready...");
+    PauseAnimation(3);
+    _startTime = DateTime.Now;
+    _endTime = _startTime.AddSeconds(_durationInSeconds);
   }
-  private void GetDuration() {
+
+  protected void EndActivity()
+  {
+    Console.WriteLine("Well done!");
+    PauseAnimation(1);
+    Console.WriteLine($"You have completed {_durationInSeconds} seconds of the {_activityName}.");
+    PauseAnimation(1);
+  }
+  private void GetDuration()
+  {
     Console.WriteLine("How long, in seconds, would you like your session to last?");
     string durationResponse = Console.ReadLine();
     _durationInSeconds = int.Parse(durationResponse);
   }
-  private void PauseAnimation() {
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
+  private void PauseAnimation(int iterations)
+  {
+    for (int i = 0; i < iterations; i++)
+    {
+      for (int j = 0; j < 3; j++)
+      {
         Console.Write("<");
         Thread.Sleep(400);
       }
-      for (int k = 0; k < 3; k++) {
+      for (int k = 0; k < 3; k++)
+      {
         Console.Write(">");
         Thread.Sleep(400);
       }
@@ -45,6 +59,13 @@ public class Activity {
       Console.Write("\b\b\b\b\b\b      \b\b\b\b\b\b");
       Thread.Sleep(500);
     }
-    
+  }
+  public void Countdown() {
+    for (int i = 5; i > 0; i--)
+    {
+      Console.Write(i);
+      Thread.Sleep(1000);
+      Console.Write("\b \b");
+    }
   }
 }

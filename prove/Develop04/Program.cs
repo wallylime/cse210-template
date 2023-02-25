@@ -29,9 +29,9 @@ class Program
       {
         case "1":
           Console.WriteLine("This will eventually run the breathing activity.");
-          Console.WriteLine("Test BeginActivity function so far:");
+          Console.WriteLine("Test Countdown: ");
           Activity newAct = new Activity("testActivity", "testDescription");
-          newAct.BeginActivity();
+          newAct.Countdown();
           break;
 
         case "2":
