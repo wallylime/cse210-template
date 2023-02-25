@@ -28,9 +28,10 @@ class Program
       switch (userChoice)
       {
         case "1":
-          Console.WriteLine("Testing my pause animation:");
-          Activity animation = new Activity();
-          animation.PauseAnimation();
+          Console.WriteLine("This will eventually run the breathing activity.");
+          Console.WriteLine("Test BeginActivity function so far:");
+          Activity newAct = new Activity("testActivity", "testDescription");
+          newAct.BeginActivity();
           break;
 
         case "2":
