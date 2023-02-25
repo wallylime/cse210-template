@@ -24,14 +24,14 @@ public class Activity
     Console.WriteLine(_activityDescription);
     GetDuration();
     Console.WriteLine("Get ready...");
-    PauseAnimation(3);
+    PauseAnimation(2);
     _startTime = DateTime.Now;
     _endTime = _startTime.AddSeconds(_durationInSeconds);
   }
 
   protected void EndActivity()
   {
-    Console.WriteLine("Well done!");
+    Console.WriteLine("\n\nWell done!");
     PauseAnimation(1);
     Console.WriteLine($"\nYou have completed {_durationInSeconds} seconds of the {_activityName}.");
     PauseAnimation(1);
