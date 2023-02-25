@@ -28,10 +28,8 @@ class Program
       switch (userChoice)
       {
         case "1":
-          Console.WriteLine("This will eventually run the breathing activity.");
-          Console.WriteLine("Test Countdown: ");
-          Activity newAct = new Activity("testActivity", "testDescription");
-          newAct.Countdown();
+          BreathingActivity breathingActivity = new BreathingActivity("breathing activity", "\nThis activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.\n");
+          breathingActivity.RunBreathingActivity();
           break;
 
         case "2":

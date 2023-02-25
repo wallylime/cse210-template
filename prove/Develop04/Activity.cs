@@ -8,7 +8,7 @@ public class Activity
   private int _durationInSeconds;
 
   private DateTime _startTime;
-  private DateTime _endTime;
+  protected DateTime _endTime;
 
   //Here's the constructor
   public Activity(string activityName, string activityDescription)
@@ -19,6 +19,7 @@ public class Activity
 
   protected void BeginActivity()
   {
+    Console.Clear();
     Console.WriteLine($"Welcome to the {_activityName}.");
     Console.WriteLine(_activityDescription);
     GetDuration();
@@ -32,7 +33,7 @@ public class Activity
   {
     Console.WriteLine("Well done!");
     PauseAnimation(1);
-    Console.WriteLine($"You have completed {_durationInSeconds} seconds of the {_activityName}.");
+    Console.WriteLine($"\nYou have completed {_durationInSeconds} seconds of the {_activityName}.");
     PauseAnimation(1);
   }
   private void GetDuration()
@@ -60,7 +61,7 @@ public class Activity
       Thread.Sleep(500);
     }
   }
-  public void Countdown() {
+  protected void Countdown() {
     for (int i = 5; i > 0; i--)
     {
       Console.Write(i);
