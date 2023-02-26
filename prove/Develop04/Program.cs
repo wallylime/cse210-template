@@ -1,5 +1,11 @@
-using System;
+/*
+Exceeding requirements:
+-Made sure the prompts and questions in the reflecting activity
+don't repeat and that they restart when all of them have been used.
+-Cooler pause animation.
+*/
 
+using System;
 class Program
 {
   static void Main(string[] args)
@@ -38,7 +44,8 @@ class Program
           break;
 
         case "3":
-          Console.WriteLine("This will eventually run the listing activity.");
+          ListingActivity listingActivity = new ListingActivity("listing activity", "\nThis activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.\n");
+          listingActivity.RunListingActivity();
           break;
 
         case "4":

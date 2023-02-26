@@ -31,7 +31,7 @@ public class Activity
 
   protected void EndActivity()
   {
-    Console.WriteLine("\n\nWell done!");
+    Console.WriteLine("\nWell done!");
     PauseAnimation(1);
     Console.WriteLine($"\nYou have completed {_durationInSeconds} seconds of the {_activityName}.");
     PauseAnimation(1);
@@ -62,7 +62,8 @@ public class Activity
       Thread.Sleep(500);
     }
   }
-  protected void Countdown() {
+  protected void Countdown()
+  {
     for (int i = 5; i > 0; i--)
     {
       Console.Write(i);
