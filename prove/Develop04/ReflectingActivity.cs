@@ -30,7 +30,6 @@ public class ReflectingActivity : Activity
 
   public void RunReflectingActivity()
   {
-    Console.Clear();
     BeginActivity();
     while (DateTime.Now < _endTime)
     {

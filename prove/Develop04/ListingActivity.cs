@@ -16,7 +16,6 @@ public class ListingActivity : Activity
   }
   public void RunListingActivity()
   {
-    Console.Clear();
     BeginActivity();
     while (DateTime.Now < _endTime)
     {
