@@ -4,6 +4,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
+        Console.WriteLine("Welcome to Goal Quest!\n");
+        Rewards rewards = new Rewards();
+        if (rewards.GetUserReward() == "") {
+           rewards.SetUserReward();
+        }
+        Console.WriteLine(rewards.GetUserReward());
+
+     
     }
 }
