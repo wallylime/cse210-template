@@ -9,8 +9,13 @@ class Program
         if (rewards.GetUserReward() == "") {
            rewards.SetUserReward();
         }
-        Console.WriteLine(rewards.GetUserReward());
-
-     
+        //Testing:
+        rewards.DisplayRewardStatus();
+        rewards.SetCurrentPoints(100);
+        rewards.DisplayRewardStatus();
+        rewards.SetCurrentPoints(150);
+        rewards.DisplayRewardStatus();
+        rewards.SetCurrentPoints(200);
+        rewards.DisplayRewardStatus();     
     }
 }
