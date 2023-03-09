@@ -6,8 +6,7 @@ class Program
   {
     Console.WriteLine("Welcome to Goal Quest!\n");
     Menu menu = new Menu();
-    //Testing menus
-    menu.ChooseGoalOptions();
+    menu.RunStartupMenu();
   }
 
 }

@@ -28,17 +28,19 @@ public class Rewards
   }
   public void SetUserReward()
   {
-    Console.WriteLine("Think of something that you would like to have or do. Maybe you have been wanting\nto go to the movies or buy a new pair of shoes or go on a trip, for example.\n");
-    Console.WriteLine("Pick one experience or item to use as your personal reward and enter it here: ");
+    Console.WriteLine("\nSet a Reward:\n" +
+    "Think of something that you would like to have or do. Maybe you would" +
+    "\nlike to go to the movies or buy a new pair of shoes or go on a trip, for example." +
+    "\n\nPick one experience or item to use as your personal reward and enter it here: ");
     _userReward = Console.ReadLine();
-    Console.WriteLine();
-    Console.WriteLine($"\nGreat! When you get to {_targetPoints} points, you can reward yourself with {_userReward}.\n");
+    SetTargetPoints();
   }
 
-  public void SetTargetPoints() {
-    Console.WriteLine("How many points would you like to reach before getting this reward?");
-    Console.WriteLine("Number of Points: ");
+  private void SetTargetPoints() {
+    Console.WriteLine("\nHow many points would you like to reach before getting this reward?");
+    Console.Write("\nNumber of points: ");
     _targetPoints = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine($"\nGreat! When you get to {_targetPoints} points, you can reward yourself with {_userReward}.\n");
   }
   public void SetCurrentPoints(int points)
   {
