@@ -6,7 +6,7 @@ public class Rewards
   private int _currentPoints = 0;
   private int _jokeInterval = 100;
   private int _jokeIndex = 0;
-  private int _targetPoints = 1000;
+  private int _targetPoints;
 
   //The jokes in this array came from this source: https://www.goodhousekeeping.com/life/entertainment/a41779929/corny-jokes/?utm_source=google&utm_medium=cpc&utm_campaign=arb_ga_ghk_md_dsa_prog_org_usx_a41779929&gclid=CjwKCAiAr4GgBhBFEiwAgwORremRi9KG1_5sRuJePdaVtxg6PLjwRQhxNsCGl4tWWyEXFccpBSkCrBoCzRMQAvD_BwE
   private string[] _dadJokes = {
@@ -31,7 +31,14 @@ public class Rewards
     Console.WriteLine("Think of something that you would like to have or do. Maybe you have been wanting\nto go to the movies or buy a new pair of shoes or go on a trip, for example.\n");
     Console.WriteLine("Pick one experience or item to use as your personal reward and enter it here: ");
     _userReward = Console.ReadLine();
+    Console.WriteLine();
     Console.WriteLine($"\nGreat! When you get to {_targetPoints} points, you can reward yourself with {_userReward}.\n");
+  }
+
+  public void SetTargetPoints() {
+    Console.WriteLine("How many points would you like to reach before getting this reward?");
+    Console.WriteLine("Number of Points: ");
+    _targetPoints = Convert.ToInt32(Console.ReadLine());
   }
   public void SetCurrentPoints(int points)
   {
