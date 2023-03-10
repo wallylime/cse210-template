@@ -4,6 +4,13 @@ using System;
 public class Rewards
 {
   private int _currentPoints = 0;
+
+  //Since I'm allowing the user to control setting the points,
+  //this joke interval is kind of a wild card.
+  //If the user only sets a few points per goal completion,
+  //it could take a very long time to get to a joke and if they
+  //set a lot of points, the jokes would have to repeat a lot.
+  //I'm okay with that for now.
   private int _jokeInterval = 100;
   private int _jokeIndex = 0;
   private int _targetPoints;
@@ -22,10 +29,6 @@ public class Rewards
     "What did the tomato say to the other tomato during a race?\nAnswer: Ketchup. :)"
     };
   private string _userReward = "";
-  public string GetUserReward()
-  {
-    return _userReward;
-  }
   public void SetUserReward()
   {
     Console.WriteLine("\nSet a Reward:\n" +
@@ -44,7 +47,7 @@ public class Rewards
   }
   public void SetCurrentPoints(int points)
   {
-    _currentPoints = points;
+    _currentPoints += points;
   }
   public void DisplayRewardStatus()
   {
