@@ -27,4 +27,8 @@ public virtual void DisplayGoal() {
   Console.WriteLine($"{_goalName} ({_goalDescription})");
 }
 
+public virtual void DidGoal() {
+  _isComplete = true;
+}
+
 }

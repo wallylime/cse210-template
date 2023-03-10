@@ -32,4 +32,10 @@ public class ChecklistGoal : Goal {
   }
   Console.WriteLine($"{_goalName} ({_goalDescription}) | Currently completed: {_timesSoFar}/{_timesToComplete}");
   }
+  public override void DidGoal() {
+    _timesSoFar ++;
+    if (_timesSoFar == _timesToComplete) {
+      _isComplete = true;
+    }
+}
 }

@@ -106,11 +106,7 @@ public class Menu
 
         case "2":
           Console.WriteLine("Here are your goals:\n");
-          foreach (Goal goal in _goals)
-          {
-            Console.Write($"{_goals.IndexOf(goal) + 1}. ");
-            goal.DisplayGoal();
-          }
+          DisplayGoals();
           break;
 
         case "3":
@@ -118,7 +114,15 @@ public class Menu
           break;
 
         case "4":
-          Console.WriteLine("This will eventually record an event.");
+          Console.WriteLine("Please select which goal you have done:\n");
+          DisplayGoals();
+          Console.Write("Goal number: ");
+          int goalSelection = Convert.ToInt32(Console.ReadLine());
+          foreach (Goal goal in _goals) {
+            if (goalSelection == (_goals.IndexOf(goal) + 1)) {
+              goal.DidGoal();
+            }
+          }
           break;
 
         case "5":
@@ -133,5 +137,13 @@ public class Menu
 
   }
 
+  private void DisplayGoals()
+  {
+    foreach (Goal goal in _goals)
+    {
+      Console.Write($"{_goals.IndexOf(goal) + 1}. ");
+      goal.DisplayGoal();
+    }
+  }
 
 }
