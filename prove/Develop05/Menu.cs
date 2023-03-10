@@ -5,10 +5,9 @@ public class Menu
 {
   private string _userChoice = "";
   private Rewards _rewards = new Rewards();
-  private SimpleGoal _simpleGoal = new SimpleGoal();
-  private EternalGoal _eternalGoal = new EternalGoal();
-  private ChecklistGoal _checklistGoal = new ChecklistGoal();
+  private List<Goal> _goals = new List<Goal>();
   private File _file = new File();
+
   public void RunStartupMenu()
   {
     while (_userChoice != "1" && _userChoice != "2" && _userChoice != "3")
@@ -62,15 +61,21 @@ public class Menu
       switch (_userChoice)
       {
         case "1":
-          _simpleGoal.SetGoal();
+          SimpleGoal simpleGoal = new SimpleGoal();
+          simpleGoal.SetGoal();
+          _goals.Add(simpleGoal);
           break;
 
         case "2":
-          _eternalGoal.SetGoal();
+          EternalGoal eternalGoal = new EternalGoal();
+          eternalGoal.SetGoal();
+          _goals.Add(eternalGoal);
           break;
 
         case "3":
-          _checklistGoal.SetGoal();
+          ChecklistGoal checklistGoal = new ChecklistGoal();
+          checklistGoal.SetGoal();
+          _goals.Add(checklistGoal);
           break;
 
         default:
@@ -100,7 +105,12 @@ public class Menu
           break;
 
         case "2":
-          Console.WriteLine("This will eventually list goals.");
+          Console.WriteLine("Here are your goals:\n");
+          foreach (Goal goal in _goals)
+          {
+            Console.Write($"{_goals.IndexOf(goal) + 1}. ");
+            goal.DisplayGoal();
+          }
           break;
 
         case "3":

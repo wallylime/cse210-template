@@ -2,6 +2,7 @@ using System;
 
 public class ChecklistGoal : Goal {
 
+  private int _timesSoFar = 0;
   private int _timesToComplete;
   private int _bonusPoints;
    public override void SetGoal()
@@ -19,5 +20,16 @@ public class ChecklistGoal : Goal {
     Console.WriteLine("When you completely finish this goal, how many bonus points would you like to get?");
     Console.Write("Number of points: ");
     _bonusPoints = Convert.ToInt32(Console.ReadLine());
+  }
+
+  public override void DisplayGoal()
+  {
+     if (_isComplete == false) {
+    Console.Write("[] ");
+  }
+  else {
+    Console.Write("[X] ");
+  }
+  Console.WriteLine($"{_goalName} ({_goalDescription}) | Currently completed: {_timesSoFar}/{_timesToComplete}");
   }
 }

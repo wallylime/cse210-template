@@ -17,4 +17,14 @@ public class Goal {
     _pointAllocation = Convert.ToInt32(Console.ReadLine());
   }
 
+public virtual void DisplayGoal() {
+  if (_isComplete == false) {
+    Console.Write("[] ");
+  }
+  else {
+    Console.Write("[X] ");
+  }
+  Console.WriteLine($"{_goalName} ({_goalDescription})");
+}
+
 }
