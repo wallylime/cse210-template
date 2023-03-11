@@ -1,16 +1,19 @@
 using System;
 
-public class SimpleGoal {
+public class SimpleGoal
+{
   protected string _goalName;
   protected string _goalDescription;
   protected int _pointAllocation;
   protected bool _isComplete = false;
 
-  public SimpleGoal() {
+  public SimpleGoal()
+  {
   }
 
-//This constructor will be used for reading strings back in from the file
-  public SimpleGoal(string goalName, string goalDescription, string pointAllocation, string isComplete) {
+  //This constructor will be used for reading strings back in from the file
+  public SimpleGoal(string goalName, string goalDescription, string pointAllocation, string isComplete)
+  {
     _goalName = goalName;
     _goalDescription = goalDescription;
     _pointAllocation = Convert.ToInt32(pointAllocation);
@@ -28,30 +31,38 @@ public class SimpleGoal {
     _pointAllocation = Convert.ToInt32(Console.ReadLine());
   }
 
-public virtual void DisplayGoal() {
-  if (_isComplete == false) {
-    Console.Write("[] ");
+  public virtual void DisplayGoal()
+  {
+    if (_isComplete == false)
+    {
+      Console.Write("[] ");
+    }
+    else
+    {
+      Console.Write("[X] ");
+    }
+    Console.WriteLine($"{_goalName} ({_goalDescription})");
   }
-  else {
-    Console.Write("[X] ");
-  }
-  Console.WriteLine($"{_goalName} ({_goalDescription})");
-}
 
-public virtual int DidGoal() {
-  //Ensuring that a user can't get points again for a goal
-  //that has already been marked complete.
-  if (_isComplete == true) {
-    return 0;
+  public virtual int DidGoal()
+  {
+    //Ensuring that a user can't get points again for a goal
+    //that has already been marked complete.
+    if (_isComplete == true)
+    {
+      Console.WriteLine("Sorry, you've already marked this goal complete.");
+      return 0;
+    }
+    else
+    {
+      _isComplete = true;
+      return _pointAllocation;
+    }
   }
-  else {
-     _isComplete = true;
-    return _pointAllocation;
-  }
-}
 
-public virtual string FormatForFile() {
-  return $"SimpleGoal | {_goalName} | {_goalDescription} | {_pointAllocation} | {_isComplete}";
-}
+  public virtual string FormatForFile()
+  {
+    return $"SimpleGoal | {_goalName} | {_goalDescription} | {_pointAllocation} | {_isComplete}";
+  }
 
 }

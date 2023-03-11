@@ -1,5 +1,3 @@
-//Need to address the achieving of rewards better and if at target points ask to set a new user goal
-//Jokes when at or passed point number
 using System;
 
 //This class keeps track of the points and rewards system
@@ -32,7 +30,8 @@ public class Rewards
     };
   private string _userReward = "";
 
-  public void SetRewardInfo(string currentPoints, string targetPoints, string userReward) {
+  public void SetRewardInfo(string currentPoints, string targetPoints, string userReward)
+  {
     _currentPoints = Convert.ToInt32(currentPoints);
     _targetPoints = Convert.ToInt32(targetPoints);
     _userReward = userReward;
@@ -47,7 +46,8 @@ public class Rewards
     SetTargetPoints();
   }
 
-  private void SetTargetPoints() {
+  private void SetTargetPoints()
+  {
     Console.WriteLine("\nHow many points would you like to reach before getting this reward?");
     Console.Write("Number of points: ");
     _targetPoints = Convert.ToInt32(Console.ReadLine());
@@ -60,33 +60,44 @@ public class Rewards
   }
   public void DisplayRewardStatus()
   {
-    if (_currentPoints == _jokeInterval)
-    {
-      Console.WriteLine($"You have {_currentPoints} points.\nSurprise! You've earned a dad joke!\n");
-      Console.WriteLine(_dadJokes[_jokeIndex]);
-      Console.WriteLine("");
-      Console.WriteLine($"{_targetPoints - _currentPoints} points left until you get {_userReward}.\n");
-      _jokeInterval += 100;
-      //I'm subtracting 1 from _dadJokes.Length because I realized
-      //that the index could be at 9 and have 1 added to it which would
-      //make it exceed the array because of the first array item being 
-      //indexed at 0
-      if (_jokeIndex < _dadJokes.Length - 1)
-      {
-        _jokeIndex += 1;
-      }
-      else
-      {
-        //Start over in the joke array
-        _jokeIndex = 0;
-      }
-    }
-    else
-    {
-      Console.WriteLine($"You have {_currentPoints} points.\n{_targetPoints - _currentPoints} points left until you get {_userReward}!\n");
-    }
+    Console.WriteLine($"\nYour total points: {_currentPoints}" +
+    $"\nPoints left until {_userReward}: {_targetPoints - _currentPoints}\n");
   }
-  public string FormatForFile() {
+
+  public void CheckForReward(int points)
+  {
+    if (points != 0)
+    {
+      Console.WriteLine($"Good job! You got {points} points!");
+      if (_currentPoints >= _jokeInterval)
+      {
+        Console.WriteLine("Surprise! You've earned a dad joke!\n");
+        Console.WriteLine(_dadJokes[_jokeIndex]);
+        Console.WriteLine("");
+        _jokeInterval += 100;
+        //I'm subtracting 1 from _dadJokes.Length because of the 1st array
+        //item being indexed at 0
+        if (_jokeIndex < _dadJokes.Length - 1)
+        {
+          _jokeIndex += 1;
+        }
+        else
+        {
+          //Start over in the joke array
+          _jokeIndex = 0;
+        }
+      }
+      if (_currentPoints >= _targetPoints)
+      {
+        Console.WriteLine($"\nNicely done! You've earned your {_userReward}!\n");
+        Console.WriteLine("Time to set a new reward!");
+        SetUserReward();
+      }
+    }
+
+  }
+  public string FormatForFile()
+  {
     return $"{_currentPoints} | {_targetPoints} | {_userReward}";
   }
 }

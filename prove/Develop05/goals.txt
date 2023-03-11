@@ -1,0 +1,4 @@
+310 | 500 | rew
+SimpleGoal | simple | test | 50 | True
+EternalGoal | eternal | test 10 | 10 | False
+ChecklistGoal | checklist | test 2 times 20, bonus 30 | 20 | True | 2 | 2 | 30

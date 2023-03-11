@@ -6,14 +6,16 @@ public class ChecklistGoal : SimpleGoal
   private int _timesSoFar = 0;
   private int _timesToComplete;
   private int _bonusPoints;
-  public ChecklistGoal(){
+  public ChecklistGoal()
+  {
   }
 
   //This constructor will be used for reading strings back in from the file
-public ChecklistGoal(string goalName, string goalDescription, string pointAllocation, string isComplete, string timesSoFar, string timesToComplete, string bonusPoints) : base(goalName, goalDescription, pointAllocation, isComplete) {
-  _timesSoFar = Convert.ToInt32(timesSoFar);
-  _timesToComplete = Convert.ToInt32(timesToComplete);
-  _bonusPoints = Convert.ToInt32(bonusPoints);
+  public ChecklistGoal(string goalName, string goalDescription, string pointAllocation, string isComplete, string timesSoFar, string timesToComplete, string bonusPoints) : base(goalName, goalDescription, pointAllocation, isComplete)
+  {
+    _timesSoFar = Convert.ToInt32(timesSoFar);
+    _timesToComplete = Convert.ToInt32(timesToComplete);
+    _bonusPoints = Convert.ToInt32(bonusPoints);
   }
   public override void SetGoal()
   {
@@ -50,6 +52,7 @@ public ChecklistGoal(string goalName, string goalDescription, string pointAlloca
     //that has already been marked complete.
     if (_isComplete == true)
     {
+      Console.WriteLine("Sorry, you've already marked this goal complete.");
       return 0;
     }
     else
@@ -65,7 +68,8 @@ public ChecklistGoal(string goalName, string goalDescription, string pointAlloca
     }
   }
 
-  public override string FormatForFile() {
-  return $"ChecklistGoal | {_goalName} | {_goalDescription} | {_pointAllocation} | {_isComplete} | {_timesSoFar} | {_timesToComplete} | {_bonusPoints}";
-}
+  public override string FormatForFile()
+  {
+    return $"ChecklistGoal | {_goalName} | {_goalDescription} | {_pointAllocation} | {_isComplete} | {_timesSoFar} | {_timesToComplete} | {_bonusPoints}";
+  }
 }

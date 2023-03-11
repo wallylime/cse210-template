@@ -129,8 +129,7 @@ public class Menu
             {
               int points = goal.DidGoal();
               _rewards.SetCurrentPoints(points);
-              Console.Clear();
-              Console.WriteLine($"Good job! You got {points} points!");
+              _rewards.CheckForReward(points);
             }
           }
           _rewards.DisplayRewardStatus();
