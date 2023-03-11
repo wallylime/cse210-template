@@ -32,10 +32,7 @@ public class Rewards
     };
   private string _userReward = "";
 
-  public Rewards(){
-  }
-//This constructor will be used for reading strings back in from the file
-  public Rewards(string currentPoints, string targetPoints, string userReward) {
+  public void SetRewardInfo(string currentPoints, string targetPoints, string userReward) {
     _currentPoints = Convert.ToInt32(currentPoints);
     _targetPoints = Convert.ToInt32(targetPoints);
     _userReward = userReward;
@@ -89,7 +86,6 @@ public class Rewards
       Console.WriteLine($"You have {_currentPoints} points.\n{_targetPoints - _currentPoints} points left until you get {_userReward}!\n");
     }
   }
-
   public string FormatForFile() {
     return $"{_currentPoints} | {_targetPoints} | {_userReward}";
   }

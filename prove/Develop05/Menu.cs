@@ -1,4 +1,4 @@
-using System;
+using System.IO;
 
 //This class deals with the different menus used in the program
 public class Menu
@@ -30,7 +30,11 @@ public class Menu
           break;
 
         case "2":
-          Console.WriteLine("This will load a saved file.");
+          LoadFile();
+          Console.WriteLine("");
+          _rewards.DisplayRewardStatus();
+          DisplayGoals();
+          RunMainMenu();
           break;
 
         case "3"://This will just quit the program
@@ -112,7 +116,7 @@ public class Menu
           break;
 
         case "3":
-          SaveToFile();          
+          SaveToFile();
           break;
 
         case "4":
@@ -129,7 +133,7 @@ public class Menu
               Console.WriteLine($"Good job! You got {points} points!");
             }
           }
-            _rewards.DisplayRewardStatus();
+          _rewards.DisplayRewardStatus();
           DisplayGoals();
           break;
 
@@ -166,6 +170,47 @@ public class Menu
       }
     }
     Console.WriteLine($"\nGreat! Your goals have been saved in {fileName}.");
+  }
+  private void LoadFile()
+  {
+    Console.WriteLine("What file would you like to load: ");
+    string fileName = Console.ReadLine();
+    string[] fileLines = System.IO.File.ReadAllLines(fileName);
+    //The first line on every file will contain the rewards info
+    //separated by | in this order: currentPoints, targetPoints, userReward
+    string rewardStatus = fileLines[0];
+    string[] rewardInfo = rewardStatus.Split("|");
+    _rewards.SetRewardInfo(rewardInfo[0].Trim(), rewardInfo[1].Trim(), rewardInfo[2].Trim());
+
+   //The goals are stored on the second line (indexed at 1) of the file
+   //and subsequent lines depending on how many goals are stored.
+   //Each piece of goal info is separated by | and the first piece of info
+   //for each goal is the goal type
+    for (int i = 1; i < fileLines.Length; i++)
+    {
+      string goal = fileLines[i];
+      string[] goalInfo = goal.Split("|");
+      string goalType = goalInfo[0].Trim();
+  //This is the goal type
+      switch (goalType)
+      {
+        case "SimpleGoal":
+          SimpleGoal simpleGoal = new SimpleGoal(goalInfo[1].Trim(), goalInfo[2].Trim(), goalInfo[3].Trim(), goalInfo[4].Trim());
+          _goals.Add(simpleGoal);
+          break;
+
+        case "EternalGoal":
+          EternalGoal eternalGoal = new EternalGoal(goalInfo[1].Trim(), goalInfo[2].Trim(), goalInfo[3].Trim(), goalInfo[4].Trim());
+          _goals.Add(eternalGoal);
+          break;
+
+        case "ChecklistGoal":
+          ChecklistGoal checklistGoal = new ChecklistGoal(goalInfo[1].Trim(), goalInfo[2].Trim(), goalInfo[3].Trim(), goalInfo[4].Trim(), goalInfo[5].Trim(), goalInfo[6].Trim(), goalInfo[7].Trim());
+          _goals.Add(checklistGoal);
+          break;
+      }
+    }
+
   }
 
 }
