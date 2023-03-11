@@ -1,8 +1,9 @@
 using System;
-
+//This class is for goals that need to be completed
+//more than once to be checked off. Extra bonus points
+//are awarded when this type of goal is completely checked off.
 public class ChecklistGoal : SimpleGoal
 {
-
   private int _timesSoFar = 0;
   private int _timesToComplete;
   private int _bonusPoints;

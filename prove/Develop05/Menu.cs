@@ -1,6 +1,7 @@
 using System.IO;
 
-//This class deals with the different menus used in the program
+//This class displays and processes user input for all of the menus:
+//the startup menu, main menu, and goal type menu 
 public class Menu
 {
   private string _userChoice = "";
@@ -132,7 +133,6 @@ public class Menu
               _rewards.CheckForReward(points);
             }
           }
-          _rewards.DisplayRewardStatus();
           DisplayGoals();
           break;
 
@@ -181,16 +181,16 @@ public class Menu
     string[] rewardInfo = rewardStatus.Split("|");
     _rewards.SetRewardInfo(rewardInfo[0].Trim(), rewardInfo[1].Trim(), rewardInfo[2].Trim());
 
-   //The goals are stored on the second line (indexed at 1) of the file
-   //and subsequent lines depending on how many goals are stored.
-   //Each piece of goal info is separated by | and the first piece of info
-   //for each goal is the goal type
+    //The goals are stored on the second line (indexed at 1) of the file
+    //and subsequent lines depending on how many goals are stored.
+    //Each piece of goal info is separated by | and the first piece of info
+    //for each goal is the goal type
     for (int i = 1; i < fileLines.Length; i++)
     {
       string goal = fileLines[i];
       string[] goalInfo = goal.Split("|");
       string goalType = goalInfo[0].Trim();
-  //This is the goal type
+      //This is the goal type
       switch (goalType)
       {
         case "SimpleGoal":

@@ -1,5 +1,10 @@
 using System;
-
+//This is the base class for checklist goals and eternal goals. I was
+//originally going to have a base class called "Goal", but I realized
+//that my SimpleGoal class did not need to change any attributes or methods
+//from the "Goal" class, so I deleted the "Goal" class and made this
+//my base class instead. The Checklist class adds some additional attributes 
+//and both the Checklist & Eternal goal classes overide some of these methods.
 public class SimpleGoal
 {
   protected string _goalName;

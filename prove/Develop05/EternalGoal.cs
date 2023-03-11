@@ -1,5 +1,7 @@
 using System;
 
+//This type of goal never gets checked off, but does get points
+//every time it is completed
 public class EternalGoal : SimpleGoal
 {
 
@@ -16,7 +18,8 @@ public class EternalGoal : SimpleGoal
     return _pointAllocation;
   }
 
-  public override string FormatForFile() {
-  return $"EternalGoal | {_goalName} | {_goalDescription} | {_pointAllocation} | {_isComplete}";
-}
+  public override string FormatForFile()
+  {
+    return $"EternalGoal | {_goalName} | {_goalDescription} | {_pointAllocation} | {_isComplete}";
+  }
 }

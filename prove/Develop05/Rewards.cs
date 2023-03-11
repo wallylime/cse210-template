@@ -68,7 +68,7 @@ public class Rewards
   {
     if (points != 0)
     {
-      Console.WriteLine($"Good job! You got {points} points!");
+      Console.WriteLine($"\nGood job! You got {points} points!\n");
       if (_currentPoints >= _jokeInterval)
       {
         Console.WriteLine("Surprise! You've earned a dad joke!\n");
@@ -94,7 +94,6 @@ public class Rewards
         SetUserReward();
       }
     }
-
   }
   public string FormatForFile()
   {
