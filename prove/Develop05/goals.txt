@@ -1,0 +1,4 @@
+3 | 50 | shoes
+SimpleGoal | simple goal | test this | 3 | True
+EternalGoal | eternal | test etermal | 3 | False
+ChecklistGoal | checklist | testing | 3 | False | 0 | 3 | 3

@@ -1,3 +1,5 @@
+//Need to address the achieving of rewards better and if at target points ask to set a new user goal
+//Jokes when at or passed point number
 using System;
 
 //This class keeps track of the points and rewards system
@@ -29,9 +31,18 @@ public class Rewards
     "What did the tomato say to the other tomato during a race?\nAnswer: Ketchup. :)"
     };
   private string _userReward = "";
+
+  public Rewards(){
+  }
+//This constructor will be used for reading strings back in from the file
+  public Rewards(string currentPoints, string targetPoints, string userReward) {
+    _currentPoints = Convert.ToInt32(currentPoints);
+    _targetPoints = Convert.ToInt32(targetPoints);
+    _userReward = userReward;
+  }
   public void SetUserReward()
   {
-    Console.WriteLine("\nSet a Reward:\n" +
+    Console.WriteLine("Set a Reward:\n" +
     "Think of something that you would like to have or do. Maybe you would" +
     "\nlike to go to the movies or buy a new pair of shoes or go on a trip, for example." +
     "\n\nPick one experience or item to use as your personal reward and enter it here: ");
@@ -41,8 +52,9 @@ public class Rewards
 
   private void SetTargetPoints() {
     Console.WriteLine("\nHow many points would you like to reach before getting this reward?");
-    Console.Write("\nNumber of points: ");
+    Console.Write("Number of points: ");
     _targetPoints = Convert.ToInt32(Console.ReadLine());
+    Console.Clear();
     Console.WriteLine($"\nGreat! When you get to {_targetPoints} points, you can reward yourself with {_userReward}.\n");
   }
   public void SetCurrentPoints(int points)
@@ -76,5 +88,9 @@ public class Rewards
     {
       Console.WriteLine($"You have {_currentPoints} points.\n{_targetPoints - _currentPoints} points left until you get {_userReward}!\n");
     }
+  }
+
+  public string FormatForFile() {
+    return $"{_currentPoints} | {_targetPoints} | {_userReward}";
   }
 }

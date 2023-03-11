@@ -5,8 +5,7 @@ public class Menu
 {
   private string _userChoice = "";
   private Rewards _rewards = new Rewards();
-  private List<Goal> _goals = new List<Goal>();
-  private File _file = new File();
+  private List<SimpleGoal> _goals = new List<SimpleGoal>();
 
   public void RunStartupMenu()
   {
@@ -16,8 +15,9 @@ public class Menu
       "\n  1. Set up new goals and rewards" +
       "\n  2. Load a saved file" +
       "\n  3. Quit");
-      Console.Write("\nChoice number: ");
+      Console.Write("Choice number: ");
       _userChoice = Console.ReadLine();
+      Console.WriteLine("");
 
       switch (_userChoice)
       {
@@ -55,8 +55,9 @@ public class Menu
       "\n     continuous basis and is never marked complete" +
       "\n  3. CHECKLIST GOAL: needs to be done a set number of times before" +
       "\n     being marked complete");
-      Console.Write("\nChoice number: ");
+      Console.Write("Choice number: ");
       _userChoice = Console.ReadLine();
+      Console.WriteLine("");
 
       switch (_userChoice)
       {
@@ -93,10 +94,11 @@ public class Menu
       "\n  1. Create a new goal" +
       "\n  2. List goals" +
       "\n  3. Save goals" +
-      "\n  4. Record an event" +
+      "\n  4. Record a goal accomplishment" +
       "\n  5. Quit");
-      Console.Write("\nChoice number: ");
+      Console.Write("Choice number: ");
       string userChoice = Console.ReadLine();
+      Console.Clear();
 
       switch (userChoice)
       {
@@ -105,24 +107,30 @@ public class Menu
           break;
 
         case "2":
-          Console.WriteLine("Here are your goals:\n");
+          _rewards.DisplayRewardStatus();
           DisplayGoals();
           break;
 
         case "3":
-          Console.WriteLine("This will eventually save goals.");
+          SaveToFile();          
           break;
 
         case "4":
-          Console.WriteLine("Please select which goal you have done:\n");
           DisplayGoals();
-          Console.Write("Goal number: ");
+          Console.Write("Please enter the number for the goal that you accomplished: ");
           int goalSelection = Convert.ToInt32(Console.ReadLine());
-          foreach (Goal goal in _goals) {
-            if (goalSelection == (_goals.IndexOf(goal) + 1)) {
-              goal.DidGoal();
+          foreach (SimpleGoal goal in _goals)
+          {
+            if (goalSelection == (_goals.IndexOf(goal) + 1))
+            {
+              int points = goal.DidGoal();
+              _rewards.SetCurrentPoints(points);
+              Console.Clear();
+              Console.WriteLine($"Good job! You got {points} points!");
             }
           }
+            _rewards.DisplayRewardStatus();
+          DisplayGoals();
           break;
 
         case "5":
@@ -136,14 +144,28 @@ public class Menu
     }
 
   }
-
   private void DisplayGoals()
   {
-    foreach (Goal goal in _goals)
+    Console.WriteLine("Here are your goals:");
+    foreach (SimpleGoal goal in _goals)
     {
-      Console.Write($"{_goals.IndexOf(goal) + 1}. ");
+      Console.Write($"  {_goals.IndexOf(goal) + 1}. ");
       goal.DisplayGoal();
     }
+  }
+  private void SaveToFile()
+  {
+    Console.WriteLine("What would you like to call this file? (It must be a .txt file.) ");
+    string fileName = Console.ReadLine();
+    using (StreamWriter goalFile = new StreamWriter(fileName))
+    {
+      goalFile.WriteLine(_rewards.FormatForFile());
+      foreach (SimpleGoal goal in _goals)
+      {
+        goalFile.WriteLine(goal.FormatForFile());
+      }
+    }
+    Console.WriteLine($"\nGreat! Your goals have been saved in {fileName}.");
   }
 
 }
